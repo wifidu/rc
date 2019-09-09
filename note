@@ -1,0 +1,27 @@
+ 
+i 写入模式、i插入之前、a插入之后、A行尾插入、I行首插入、o下行插入、O上行插入
+x 删除光标后一个字符
+d + ←→删除光标←→字符（d +3←）、dd删除一行（其实是剪切，p粘贴）
+y+ ←→复制光标←→字符 （y+3←）
+c 删除并进入写入模式、w 光标向下移动一个词、cw删除一个词并进入写入模式、b光标到上一个词 、ciw词中删除一个词并进入写入模式，yi
+f 找词
+* 寻找相同的词
+可视情况下 normal
+：e + ~地址  打开
+git diff 查看没有加载的更改
+git add . 添加所有更改
+git reset 撤销
+git config --global user.name "姓名"
+git config --global user.emal "邮箱"
+git commit -m "描述"
+vim .gitignore 忽视文件
+git rm --cache 文件名 不追踪
+git branch 分支名字
+git checkout 分知名 切换到分支
+git merge 分支名 和分支、
+git branch 查看分支
+git branch -d 分知名 删除分支
+git remote add origin 网址
+git push --set-upstream origin master 
+git config credential.helper store 记住密码
+git pull 项目最近状态
