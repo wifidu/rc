@@ -27,3 +27,6 @@ git remote add origin 网址
 git push --set-upstream origin master 把新建branch更新到origin
 git config credential.helper store 记住密码
 git pull 项目最近状态
+. git update-index --assume-unchanged 文件名
+. git update-index --no-assume-unchanged 文件名 追踪和不追踪
+ git pull origin master --allow-unrelated-histories  解决无法合并
