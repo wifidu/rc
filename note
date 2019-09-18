@@ -34,3 +34,4 @@ git clone git_仓库_url 获取全部branch内容，整体下载时间较长 & �
 git clone -b git_分支名称 git_仓库_url 根上述 1. 结果一致
 git clone -b git_分支名称 --single--branch git_仓库_url 获取指定分支的代码
 git clone --depth 10 git_仓库_url 只会获取最近 xx（10条提交记录的）代码，默认是master分支， 如果想要指定分支，可以结合 -b --single--branch 使用！
+https://learnku.com/thinkphp?filter=default&page=1 //ranger使用
