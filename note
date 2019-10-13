@@ -66,3 +66,11 @@ Hello world!             ysiw)       Hello (world)!
 Hello w*orld!             ysiw(       Hello ( world )
 
 
+使用命令 git remote -v 查看你当前的 remote url
+
+$ git remote -v
+
+复制此ssh链接，然后使用命令 git remote set-url 来调整你的url。
+
+git remote set-url origin git@github.com:someaccount/someproject.git
+ssh-keygen -t rsa -C "your_email@youremail.com"
