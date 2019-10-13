@@ -1,3 +1,6 @@
+
+
+
 '''弄个臭git  今天。。。 
 i 写入模式、i插入之前、a插入之后、A行尾插入、I行首插入、o下行插入、O上行插入
 x 删除光标后一个字符
@@ -35,3 +38,31 @@ git clone -b git_分支名称 git_仓库_url 根上述 1. 结果一致
 git clone -b git_分支名称 --single--branch git_仓库_url 获取指定分支的代码
 git clone --depth 10 git_仓库_url 只会获取最近 xx（10条提交记录的）代码，默认是master分支， 如果想要指定分支，可以结合 -b --single--branch 使用！
 https://learnku.com/thinkphp?filter=default&page=1 //ranger使用
+
+可视模式下 按： norm输入指令，进行多行操作
+
+:norm Tabularize /= 对齐等号
+先按q然后再选择要录制的宏键eg：a，然后开始开始录制 q结束  使用@a 使用宏
+
+
+{段首  }端尾
+使用gcc注释掉的线（取数）gc在视觉模式注释掉选择
+
+1.删除包围符号的命令是ds,后面加的字符表示要删除的符号，比如：
+
+"Hello world!"           ds"         Hello world!
+1
+2.替换包围符号的命令是cs,命令后跟两个参数，分别是被替换的符号和需要使用的符号。比如
+
+"Hello world!"           cs"'        'Hello world!'
+1
+3.添加包围符号的命令是ys(ys可以记为you surround)，命令后同样跟两个参数，第一个是一个vim“动作”（motion）或者是一个文本对象,其中motion即vim动作，比如说w向后一个单词。文本对象简单的来说主要是来通过一些分隔符来标识一段文本，比如iw就是一个文本对象，即光标下的单词。
+
+Hello world!             ysiw)       Hello (world)!
+1
+另外： yss 命令可以用于整行操作，忽略中间的空格,yS 和 ySS 还能让包围内容单独一行并且加上缩进。
+4.添加包围符号还有个非常好用的方式：在可视模式v下，按下S后即可添加想要添加的包围符号了。再说一个小技巧：在包围符号为括时，输入左括号 (或者{ ,则会留一个空格
+
+Hello w*orld!             ysiw(       Hello ( world )
+
+
