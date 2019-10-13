@@ -111,6 +111,10 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'itchyny/vim-cursorword'
 Plug 'nathanaelkane/vim-indent-guides'
 
+
+Plug 'AndrewRadev/switch.vim'
+
+
 " Auto Complete
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -126,6 +130,11 @@ Plug 'mattn/emmet-vim'
 let g:ctrlp_map = '<c-p>'
 " Plug 'terryma/vim-multiple-cursors' 多光标操作
 call plug#end()
+
+" false or fale
+
+" let g:switch_mapping = "-"
+
 
 " ===
 " === Tab management
