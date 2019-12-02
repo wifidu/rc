@@ -1,6 +1,13 @@
+
+
+"
 " ===
 " === System
 " ===
+
+set foldmethod=indent
+set foldlevel=99
+set foldenable
 set nocompatible
 filetype on
 filetype indent on
@@ -22,10 +29,12 @@ syntax on
 set number 
 
 " Show command autocomplete
-set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
-set wildmenu                                                 " show a navigable menu for tab completion
-set wildmode=longest,list,full
+" set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+" set wildmenu                                                 " show a navigable menu for tab completion
+" set wildmode=longest,list,full
 
+" Press space twice to jump to the next '<++>' and edit it
+map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4i
 
 set hlsearch 
 
@@ -92,11 +101,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ayu-theme/ayu-vim'
 Plug 'connorholyday/vim-snazzy'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary' 
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs' 
 
-Plug 'airblade/vim-gitgutter'
+" Git
+Plug 'rhysd/conflict-marker.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+
 Plug 'kien/ctrlp.vim'
 
 Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
@@ -105,6 +118,8 @@ Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 " Markdown
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'vimwiki/vimwiki'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } , 'for' :['markdown', 'vim-plug']}
+
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/SimpylFold'
@@ -112,11 +127,13 @@ Plug 'itchyny/vim-cursorword'
 Plug 'nathanaelkane/vim-indent-guides'
 
 
+Plug 'francoiscabrol/ranger.vim'
+
 Plug 'AndrewRadev/switch.vim'
 
 
 " Auto Complete
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'ajmwagar/vim-deus'
 Plug 'jaxbot/semantic-highlight.vim'
@@ -161,7 +178,7 @@ let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 color snazzy
-let g:SnazzyTransparent = 0 
+" let g:SnazzyTransparent = 1
 set termguicolors
 set background=dark
 let g:airline_theme='dracula'
@@ -176,16 +193,11 @@ let g:lightline = {
 " let NERDTreeMapCloseDir = "n"
 " let NERDTreeMapChangeRoot = "y"
 
-" PHP代码折叠
-map <F5> <Esc>:EnableFastPHPFolds<Cr>
-map <F6> <Esc>:EnablePHPFolds<Cr>
-map <F7> <Esc>:DisablePHPFolds<Cr>
-let g:DisableAutoPHPFolding = 1
 
 " 显示不同变量的不同颜色
 nnoremap <Leader>s :SemanticHighlightToggle<cr>
 
-" ===
+
 " === Dress up my vim
 " ===
 map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
@@ -195,9 +207,13 @@ map <LEADER>c2 :set background=light<CR>:colorscheme ayu<CR>:AirlineTheme ayu_li
 " ===
 " === ale
 " ===
-let b:ale_linters = [] "['pylint']
-" let b:ale_fixers = ['autopep8', 'yapf']
-let g:ale_python_pylint_options = "--extension-pkg-whitelist=pygame"
+let g:ale_virtualtext_cursor = 1
+let g:ale_linters = {
+\   'php': ['langserver'],
+\}
+" let b:ale_linters = [] "['pylint']
+" " let b:ale_fixers = ['autopep8', 'yapf']
+" let g:ale_python_pylint_options = "--extension-pkg-whitelist=pygame"
 
 " ===
 " === vim-indent-guide
@@ -209,9 +225,6 @@ let g:indent_guides_color_change_percent = 1
 silent! unmap <LEADER>ig
 autocmd WinEnter * silent! unmap <LEADER>ig
 
-" 防止bug  vim-deus
-" set t_Co=256
-" set termguicolors
 
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -221,11 +234,86 @@ autocmd WinEnter * silent! unmap <LEADER>ig
 " let g:deus_termcolors=256
 "
  "--fold setting vim折叠设置--
- "
- " 用缩进来定义折叠
-set fdm=indent
- " 启动vim时不要自动折叠代码
-set foldlevel=99
- " 设置折叠栏宽度
-" set foldcolumn=5
 
+" let g:SnazzyTransparent = 1
+
+" Cursor shape
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+" Indentation
+nnoremap < <<
+nnoremap > >>
+
+" ===
+" === coc
+" ===
+" fix the most annoying bug that coc has
+silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
+"let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go', 'coc-omnisharp']
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]	=~ '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<Tab>" :
+			\ coc#refresh()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <c-space> coc#refresh()
+" Useful commands
+nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
+nnoremap <leader>rn <Plug>(coc-rename)
+
+" ==
+" == vim-multiple-cursor
+" ==
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_start_word_key = '<c-k>'
+let g:multi_cursor_select_all_word_key = '<a-k>'
+let g:multi_cursor_start_key = 'g<c-k>'
+let g:multi_cursor_select_all_key = 'g<a-k>'
+let g:multi_cursor_next_key = '<c-k>'
+let g:multi_cursor_prev_key = '<c-p>'
+let g:multi_cursor_skip_key = '<C-x>'
+let g:multi_cursor_quit_key = '<Esc>'
+
+" ===
+" === Ranger.vim
+" ===
+nnoremap <LEADER>r :Ranger<CR>
+
+
+" Compile function
+map r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+  exec "w"
+  if &filetype == 'c'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'cpp'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'java'
+    exec "!javac %"
+    exec "!time java %<"
+  elseif &filetype == 'sh'
+    :!time bash %
+  elseif &filetype == 'python'
+    silent! exec "!clear"
+    exec "!time python3 %"
+  elseif &filetype == 'html'
+    exec "!firefox % &"
+  elseif &filetype == 'markdown'
+    exec "MarkdownPreview"
+  elseif &filetype == 'vimwiki'
+    exec "MarkdownPreview"
+  endif
+endfunc
