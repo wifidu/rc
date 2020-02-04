@@ -34,7 +34,7 @@ set number
 " set wildmode=longest,list,full
 
 " Press space twice to jump to the next '<++>' and edit it
-map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4i
+map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 set hlsearch 
 
