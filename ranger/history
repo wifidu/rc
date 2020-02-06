@@ -1,0 +1,50 @@
+touch .gitignore
+touch _topic_lists.blade.php
+touch _sidebar.blade.php
+touch filter.py
+find lig
+find source
+touch config-back
+open_with vim
+rename config-back1
+rename config-1
+rename config
+touch GaosiFilter.py
+mkdir 课设
+touch ButterworthLowpass
+rename ButterworthLowpass.py
+rename GaossianLowFilter.py
+rename LowFilte.py_
+rename LowFilter.py
+rename rice1.jpg
+rename rice2.jpg
+rename rice.jpg
+touc test.py
+touch text.py
+touch hs
+rename hs.py
+touch hw4.py
+rename hw4.py
+touch hw42.py
+open_with 
+find
+search l
+search al
+search ala
+search config
+search .config
+find .con
+open_with nvim
+shell 
+open_with nvim]
+find 
+open_with  nvim
+
+find i3
+rename Credit_managementController.php
+delete
+rename CreditManagement.php
+rename CreditManagementFactory.php
+rename CreditManagementsTableSeeder.php
+mkdir Traits
+touch ApiTraits.php
