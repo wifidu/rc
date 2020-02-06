@@ -110,6 +110,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs' 
 
+Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} kp
+
 " Git
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-fugitive'
@@ -135,8 +137,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'francoiscabrol/ranger.vim'
 
 Plug 'AndrewRadev/switch.vim'
-" Formatter
-Plug 'Chiel92/vim-autoformat'
+
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -187,16 +188,7 @@ color snazzy
 let g:SnazzyTransparent = 1
 set termguicolors
 set background=dark
-" let g:airline_theme='base16_flat'
 let g:airline_theme='dracula'
-" let g:airline_theme='base16' 
-" 红色
-" let g:airline_theme='fairyfloss' 
-" 紫色
-" let g:airline_theme='behelit' 
-" 蓝色
-" let g:airline_theme='base16_snazzy' 
-" snazzy
 let g:lightline = {
 \ 'colorscheme': 'snazzy',
 \ }
@@ -266,7 +258,7 @@ nnoremap > >>
 " ===
 " fix the most annoying bug that coc has
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-phpls', 'coc-omnisharp']
+"let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go', 'coc-omnisharp']
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -335,8 +327,3 @@ endfunc
 
 vnoremap Y "+y
 " set clipboard=unnamedplus
-
-" ===
-" === AutoFormat
-" ===
-nnoremap \f :Autoformat<CR>
