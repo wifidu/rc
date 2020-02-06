@@ -1,3 +1,4 @@
+map e $
 
 
 "
@@ -6,6 +7,7 @@
 " ===
 
 set foldmethod=indent
+set wrap
 set foldlevel=99
 set foldenable
 set nocompatible
@@ -35,6 +37,8 @@ set number
 
 " Press space twice to jump to the next '<++>' and edit it
 map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+
+map <LEADER>w :set wrap<Esc>
 
 set hlsearch 
 
@@ -81,7 +85,6 @@ set mouse=a
 
 set relativenumber
 set cursorline
-set wrap
 set showcmd
 
 " 提示相同地方
@@ -96,6 +99,8 @@ noremap U 5k
 noremap E 5j
 set smartcase
 call plug#begin('~/.vim/plugged')
+" 注释
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ayu-theme/ayu-vim'
@@ -130,7 +135,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'francoiscabrol/ranger.vim'
 
 Plug 'AndrewRadev/switch.vim'
-
+" Formatter
+Plug 'Chiel92/vim-autoformat'
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -178,10 +184,19 @@ let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 color snazzy
-" let g:SnazzyTransparent = 1
+let g:SnazzyTransparent = 1
 set termguicolors
 set background=dark
+" let g:airline_theme='base16_flat'
 let g:airline_theme='dracula'
+" let g:airline_theme='base16' 
+" 红色
+" let g:airline_theme='fairyfloss' 
+" 紫色
+" let g:airline_theme='behelit' 
+" 蓝色
+" let g:airline_theme='base16_snazzy' 
+" snazzy
 let g:lightline = {
 \ 'colorscheme': 'snazzy',
 \ }
@@ -251,7 +266,7 @@ nnoremap > >>
 " ===
 " fix the most annoying bug that coc has
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-"let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go', 'coc-omnisharp']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-phpls', 'coc-omnisharp']
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -317,3 +332,11 @@ func! CompileRunGcc()
     exec "MarkdownPreview"
   endif
 endfunc
+
+vnoremap Y "+y
+" set clipboard=unnamedplus
+
+" ===
+" === AutoFormat
+" ===
+nnoremap \f :Autoformat<CR>
