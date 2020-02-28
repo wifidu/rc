@@ -1,4 +1,5 @@
 map e $
+map H ^
 
 "
 " ===
@@ -133,6 +134,12 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'itchyny/vim-cursorword'
 Plug 'nathanaelkane/vim-indent-guides'
 
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
 
 Plug 'francoiscabrol/ranger.vim'
 
@@ -147,12 +154,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jaxbot/semantic-highlight.vim'
 " Plug 'godlygeek/tabular'
 " 查找相同单词，表顺序
-" Plug 'osyo-manga/vim-anzu'
+Plug 'osyo-manga/vim-anzu'
 
 " Plug 'dense-analysis/ale'
 Plug 'mattn/emmet-vim' 
 
-Plug 'osyo-manga/vim-anzu'
 
 let g:ctrlp_map = '<c-p>'
 " Plug 'terryma/vim-multiple-cursors' 多光标操作
@@ -262,7 +268,6 @@ autocmd WinEnter * silent! unmap <LEADER>ig
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
 " Indentation
 nnoremap < <<
 nnoremap > >>
@@ -389,18 +394,40 @@ set statusline=%{anzu#search_status()}
 
 map gtd :Gdiff<CR>
 
-nmap <silent> <C-c> <Plug>(coc-cursors-position)
-nmap <silent> <C-d> <Plug>(coc-cursors-word)
-xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+" nmap <silent> <C-c> <Plug>(coc-cursors-position)
+" nmap <silent> <C-d> <Plug>(coc-cursors-word)*
+" xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 " xmap <silent> <C-d> <Plug>(coc-cursors-range)
 " use normal command like `<leader>xi(`
-" nmap <leader>x  <Plug>(coc-cursors-operator)
 map vw viw
 map v( va(
 map v' va'
 map v" va"
 map v` va`
 map v< va<
-" nmap ] n<C-d>
-map ] <Plug>(coc-cursors-position)*<Plug>(coc-cursors-position)
-vmap: :norm
+
+" nmap <silent> ] <Plug>(coc-cursors-word)*
+
+vmap: :norm 
+
+" nmap <silent> <C-d> <Plug>(coc-cursors-word)
+xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+
+nmap <expr> <silent> <C-d> <SID>select_current_word()
+function! s:select_current_word()
+  if !get(g:, 'coc_cursors_activated', 0)
+    return "\<Plug>(coc-cursors-word)"
+  endif
+  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+endfunc
+
+hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsJumpForwardTrigger="<C-e>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+
+let g:snips_author="DuWeifan"
+
