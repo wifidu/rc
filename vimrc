@@ -1,6 +1,5 @@
 map e $
 
-
 "
 " ===
 " === System
@@ -79,7 +78,7 @@ map <LEADER>+ :vertical resize+5<CR>
 map <LEADER>- :vertical resize-5<CR>
 map <LEADER>n :NERDTreeToggle<CR>
 
-map <LEADER>t :Tabularize /
+" map <LEADER>t :Tabularize /
 set mouse=a
 
 
@@ -95,8 +94,8 @@ set autochdir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
-noremap U 5k
-noremap E 5j
+noremap E 5k
+noremap D 5j
 set smartcase
 call plug#begin('~/.vim/plugged')
 " 注释
@@ -127,6 +126,7 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } , 'for' :['markdown', 'vim-plug']}
 
+Plug 'junegunn/vim-easy-align'
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/SimpylFold'
@@ -145,7 +145,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'ajmwagar/vim-deus'
 Plug 'jaxbot/semantic-highlight.vim'
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 " 查找相同单词，表顺序
 " Plug 'osyo-manga/vim-anzu'
 
@@ -166,6 +166,8 @@ call plug#end()
 " ===
 " Create a new tab with tu
 map tu :tabe<CR>
+" Move around tabs with tn and ti
+map th :-tabnext<CR>
 " Move around tabs with tn and ti
 map th :-tabnext<CR>
 map tl :+tabnext<CR>
@@ -268,7 +270,7 @@ nnoremap > >>
 " ===
 " fix the most annoying bug that coc has
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-python', 'coc-omnisharp', 'coc-yml']
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-python', 'coc-omnisharp', 'coc-yaml']
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -288,8 +290,8 @@ nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 " nnoremap <silent> gi <Plug>(coc-implementation)
 " nnoremap <silent> gr <Plug>(coc-references)
 " nnoremap <leader>rn <Plug>(coc-rename)
-nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>prn :CocCommand document.renameCurrentWord<CR>
+" nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rn :CocCommand document.renameCurrentWord<CR>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -297,9 +299,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap tt :CocCommand explorer<CR>
+" coc-translator
+nmap ts <Plug>(coc-translator-p)
 
-" ==
-" == vim-multiple-cursor
 " ==
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_start_word_key = '<c-k>'
@@ -360,5 +363,11 @@ nnoremap \f :Autoformat<CR>
 "=== Vim-table-mode
 "===
 map \t :TableModeToggle<CR>
+
+" ===
+" === vim-easy-align
+" ===
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 map gtd :Gdiff<CR>
