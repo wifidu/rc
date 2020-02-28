@@ -391,7 +391,8 @@ map gtd :Gdiff<CR>
 
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <silent> <C-d> <Plug>(coc-cursors-word)
-xmap <silent> <C-d> <Plug>(coc-cursors-range)
+xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+" xmap <silent> <C-d> <Plug>(coc-cursors-range)
 " use normal command like `<leader>xi(`
 " nmap <leader>x  <Plug>(coc-cursors-operator)
 map vw viw
@@ -400,4 +401,6 @@ map v' va'
 map v" va"
 map v` va`
 map v< va<
-nmap ] n<C-d>
+" nmap ] n<C-d>
+map ] <Plug>(coc-cursors-position)*<Plug>(coc-cursors-position)
+vmap: :norm
