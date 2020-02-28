@@ -1,4 +1,4 @@
-# VIM conf
+# VIMRC 
 
 ## Requirements
 
@@ -11,8 +11,11 @@
 ## Example configuration for custom language servers
 
 Add `languageserver` section in your `coc-settings.json` for registering custom language servers.
+`:CocConfig`
 
 > Recommended (way faster than php-language-server)
+
+> [:star: Buy an Intelephense licence to access premium features.](https://intelephense.com/)
 
 ```json
 {
