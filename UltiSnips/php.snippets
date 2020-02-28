@@ -1,0 +1,25 @@
+snippet doc "comment section for php" b
+/**
+ * function ${1:函数名}
+ * describe ${2:函数描述}
+ * @return  ${3:返回类型}
+ * @author  ${4:`!v g:snips_author`}
+ * date     `!v strftime('%Y-%m-%d %H:%M:S')`
+ */
+ ${0}
+endsnippet
+
+snippet fc "PHP Class Setter" b
+/**
+ * function ${1:函数名}
+ * describe ${2:函数描述}
+ * @param   $$4 $$3
+ * @return  ${5:`!p snip.rv=snip.basename`}
+ * @author  `!v g:snips_author`
+ * date     `!v strftime('%Y-%m-%d %H:%M:S')`
+ */
+public function ${1/\w+\s*/\u$0/}(${4}${3:变量名})
+{
+    ${6:return $this;}
+}
+endsnippet
