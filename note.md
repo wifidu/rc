@@ -127,3 +127,30 @@ apt-get install python-software-properties software-properties-common -y
 
 2019、2020最新可用idea ,pycharm, webstorm, phpstorm激活码长期维护
 https://www.playezu.com/build-tool/21926.html
+
+
+命令是：viw。它的作用是选取一个单词（word），无论光标在这个单词的哪个位置都能选中整个单词，那么i到底有什么作用呢？这就是今天要讲解的内容。
+
+Text-Object：可以指一个单词，一整句文本，抑或一对括号内的文本，甚至是html或xml标签内的文本，都可以抽象成Text-Object。与Text-Object紧密相关的两个命令就是a和i，啊？这两个命令不是append和insert吗？其实，a和i操作在Visual mode或者某些操作（比如：d,y等）后面就是另外一种效果了。例如，删除一个单词可以用daw或者diw。那么a与i又有什么区别呢？
+
+** a会选择一个对象（an object）包括空格在内，而i只会选择一个对象的内部（an inner object）不包含空格。**
+
+下面就是一些命令含义：
+
+aw a word
+iw inner word
+aW a WORD
+iW inner WORD
+as a sentence
+is inner sentence
+ap a paragraph
+ip inner paragraph
+a[|] a[] block （这里的'|'是或的意思，也就是说'a['和'a]'都表示一个[]块）
+'{} &al;>()与[]作用类似
+at a tag （这里的tag可以是html或xml中任何标签对）
+it inner tag
+
+我们还可以利用可视化模式，来合并多行文本。J命令可以将高亮显示的文本内容合并为一行，同时以空格来分隔各行。如果不希望在行间插入空格，那么可以使用gJ命令。
+使用g?命令，可以使用rot 13算法来加密高亮显示的文本。针对同一个文本再次执行加密命令，就可以进行文本解密。
+在可视化模式下，按下:键就可以对选定范围进行操作。例如：我们先在可视化模式下选中文本，然后执行:write block.txt命令，就可以将文本块写入另一文件中。选择多行，然后执行:sort命令，则可以对选中的文本进行排序。
+

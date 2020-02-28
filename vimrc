@@ -128,7 +128,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } , 'for' 
 
 Plug 'junegunn/vim-easy-align'
 
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/SimpylFold'
 Plug 'itchyny/vim-cursorword'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -151,7 +151,9 @@ Plug 'jaxbot/semantic-highlight.vim'
 
 " Plug 'dense-analysis/ale'
 Plug 'mattn/emmet-vim' 
-" 目前还没掌握emmet
+
+Plug 'osyo-manga/vim-anzu'
+
 let g:ctrlp_map = '<c-p>'
 " Plug 'terryma/vim-multiple-cursors' 多光标操作
 call plug#end()
@@ -304,15 +306,15 @@ nmap tt :CocCommand explorer<CR>
 nmap ts <Plug>(coc-translator-p)
 
 " ==
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_start_word_key = '<c-k>'
-let g:multi_cursor_select_all_word_key = '<a-k>'
-let g:multi_cursor_start_key = 'g<c-k>'
-let g:multi_cursor_select_all_key = 'g<a-k>'
-let g:multi_cursor_next_key = '<c-k>'
-let g:multi_cursor_prev_key = '<c-p>'
-let g:multi_cursor_skip_key = '<C-x>'
-let g:multi_cursor_quit_key = '<Esc>'
+" let g:multi_cursor_use_default_mapping=0
+" let g:multi_cursor_start_word_key = '<c-k>'
+" let g:multi_cursor_select_all_word_key = '<a-k>'
+" let g:multi_cursor_start_key = 'g<c-k>'
+" let g:multi_cursor_select_all_key = 'g<a-k>'
+" let g:multi_cursor_next_key = '<c-k>'
+" let g:multi_cursor_prev_key = '<c-p>'
+" let g:multi_cursor_skip_key = '<C-x>'
+" let g:multi_cursor_quit_key = '<Esc>'
 
 " ===
 " === Ranger.vim
@@ -370,4 +372,32 @@ map \t :TableModeToggle<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" anzu
+"===========
+" mapping
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+
+" clear status
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+
+" statusline
+set statusline=%{anzu#search_status()}
+"-------------
+
 map gtd :Gdiff<CR>
+
+nmap <silent> <C-c> <Plug>(coc-cursors-position)
+nmap <silent> <C-d> <Plug>(coc-cursors-word)
+xmap <silent> <C-d> <Plug>(coc-cursors-range)
+" use normal command like `<leader>xi(`
+" nmap <leader>x  <Plug>(coc-cursors-operator)
+map vw viw
+map v( va(
+map v' va'
+map v" va"
+map v` va`
+map v< va<
+nmap ] n<C-d>

@@ -49,6 +49,7 @@ vi'、vi"、vi(、vi[、vi{、vi< - 分别选中这些配对标点符号中的�
 
 vimspector
 
+按dt"删除所有内容，直到第一个引号
  默认左对齐
 ,a<space>  首个空格对齐
 ,a2<space> 第二个空格对齐
