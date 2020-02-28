@@ -1,3 +1,4 @@
+map e $
 
 
 "
@@ -6,6 +7,7 @@
 " ===
 
 set foldmethod=indent
+set wrap
 set foldlevel=99
 set foldenable
 set nocompatible
@@ -29,10 +31,14 @@ syntax on
 set number 
 
 " Show command autocomplete
-set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
-set wildmenu                                                 " show a navigable menu for tab completion
-set wildmode=longest,list,full
+" set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+" set wildmenu                                                 " show a navigable menu for tab completion
+" set wildmode=longest,list,full
 
+" Press space twice to jump to the next '<++>' and edit it
+map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+
+map <LEADER>w :set wrap<Esc>
 
 set hlsearch 
 
@@ -79,7 +85,6 @@ set mouse=a
 
 set relativenumber
 set cursorline
-set wrap
 set showcmd
 
 " 提示相同地方
@@ -94,16 +99,24 @@ noremap U 5k
 noremap E 5j
 set smartcase
 call plug#begin('~/.vim/plugged')
+" 注释
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ayu-theme/ayu-vim'
 Plug 'connorholyday/vim-snazzy'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary' 
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs' 
 
-" Plug 'airblade/vim-gitgutter'
+Plug 'dhruvasagar/vim-table-mode'
+
+" Git
+Plug 'rhysd/conflict-marker.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+
 Plug 'kien/ctrlp.vim'
 
 Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
@@ -112,8 +125,7 @@ Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 " Markdown
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'vimwiki/vimwiki'
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } , 'for' :['markdown', 'vim-plug']}
 
 
 Plug 'terryma/vim-multiple-cursors'
@@ -125,7 +137,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'francoiscabrol/ranger.vim'
 
 Plug 'AndrewRadev/switch.vim'
-
+" Formatter
+Plug 'Chiel92/vim-autoformat'
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -176,7 +189,16 @@ color snazzy
 let g:SnazzyTransparent = 1
 set termguicolors
 set background=dark
+" let g:airline_theme='base16_flat'
 let g:airline_theme='dracula'
+" let g:airline_theme='base16' 
+" 红色
+" let g:airline_theme='fairyfloss' 
+" 紫色
+" let g:airline_theme='behelit' 
+" 蓝色
+" let g:airline_theme='base16_snazzy' 
+" snazzy
 let g:lightline = {
 \ 'colorscheme': 'snazzy',
 \ }
@@ -230,7 +252,7 @@ autocmd WinEnter * silent! unmap <LEADER>ig
 "
  "--fold setting vim折叠设置--
 
-let g:SnazzyTransparent = 1
+" let g:SnazzyTransparent = 1
 
 " Cursor shape
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -246,7 +268,7 @@ nnoremap > >>
 " ===
 " fix the most annoying bug that coc has
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-"let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go', 'coc-omnisharp']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-phpls', 'coc-omnisharp']
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -284,3 +306,48 @@ let g:multi_cursor_quit_key = '<Esc>'
 " === Ranger.vim
 " ===
 nnoremap <LEADER>r :Ranger<CR>
+
+
+" Compile function
+map <LEADER>e :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+  exec "w"
+  if &filetype == 'c'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'php'
+    :set splitbelow
+		:term php %
+  elseif &filetype == 'cpp'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'java'
+    exec "!javac %"
+    exec "!time java %<"
+  elseif &filetype == 'sh'
+    :!time bash %
+  elseif &filetype == 'python'
+    :set splitbelow
+		:term python %
+  elseif &filetype == 'html'
+    exec "!firefox % &"
+  elseif &filetype == 'markdown'
+    exec "MarkdownPreview"
+  elseif &filetype == 'vimwiki'
+    exec "MarkdownPreview"
+  endif
+endfunc
+
+vnoremap Y "+y
+" set clipboard=unnamedplus
+
+" ===
+" === AutoFormat
+" ===
+nnoremap \f :Autoformat<CR>
+
+
+"===
+"=== Vim-table-mode
+"===
+map \t :TableModeToggle<CR>
