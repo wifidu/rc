@@ -13,12 +13,12 @@ snippet fc "PHP Class Setter" b
 /**
  * function ${1:函数名}
  * describe ${2:函数描述}
- * @param   $$4 $$3
- * @return  ${5:`!p snip.rv=snip.basename`}
+ * @param   $4$3
+ * @return  ${5:Array}
  * @author  `!v g:snips_author`
  * date     `!v strftime('%Y-%m-%d %H:%M:S')`
  */
-public function ${1/\w+\s*/\u$0/}(${4}${3:变量名})
+public function $1($4$3)
 {
     ${6:return $this;}
 }
