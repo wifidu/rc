@@ -185,6 +185,7 @@ map tml :+tabmove<CR>
 
 " Call figlet
 map tx :r !figlet 
+map td :r !date "+%Y-%m-%d %H:%M:%S"
 
 " w !sudo tee %
 " w ~./***   写到某路径  r 读
@@ -394,9 +395,9 @@ set statusline=%{anzu#search_status()}
 
 map gtd :Gdiff<CR>
 
-" nmap <silent> <C-c> <Plug>(coc-cursors-position)
-" nmap <silent> <C-d> <Plug>(coc-cursors-word)*
-" xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+nmap <silent> <C-c> <Plug>(coc-cursors-position)
+nmap <silent> <C-d> <Plug>(coc-cursors-word)*
+xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 " xmap <silent> <C-d> <Plug>(coc-cursors-range)
 " use normal command like `<leader>xi(`
 map vw viw
@@ -406,20 +407,16 @@ map v" va"
 map v` va`
 map v< va<
 
-" nmap <silent> ] <Plug>(coc-cursors-word)*
-
 vmap: :norm 
+" xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 
-" nmap <silent> <C-d> <Plug>(coc-cursors-word)
-xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
-
-nmap <expr> <silent> <C-d> <SID>select_current_word()
-function! s:select_current_word()
-  if !get(g:, 'coc_cursors_activated', 0)
-    return "\<Plug>(coc-cursors-word)"
-  endif
-  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-endfunc
+" nmap <expr> <silent> ] <SID>select_current_word()
+" function! s:select_current_word()
+"   if !get(g:, 'coc_cursors_activated', 0)
+"     return "\<Plug>(coc-cursors-word)"
+"   endif
+"   return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+" endfunc
 
 hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 
