@@ -75,7 +75,10 @@ map <LEADER>l <C-w>l
 map <LEADER>k <C-W>k
 map <LEADER>h <C-w>h
 map <LEADER>j <C-w>j
-map <LEADER>+ :vertical resize+5<CR>
+" Rotate screens
+noremap srk <C-w>b<C-w>K
+noremap srh <C-w>b<C-w>H
+map <LEADER>+ :hertical resize+5<CR>
 map <LEADER>- :vertical resize-5<CR>
 map <LEADER>n :NERDTreeToggle<CR>
 
