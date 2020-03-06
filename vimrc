@@ -427,4 +427,10 @@ let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 
 let g:snips_author="DuWeifan"
+"===
+"=== alacritty-vim
+"===
 
+if &term == "alacritty"        
+  let &term = "xterm-256color"
+endif
