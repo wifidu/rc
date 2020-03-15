@@ -125,9 +125,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'dhruvasagar/vim-table-mode'
 
 " Git
-Plug 'rhysd/conflict-marker.vim'
+" Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'kien/ctrlp.vim'
 
@@ -179,6 +180,9 @@ Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-startify'
 let g:ctrlp_map = '<c-p>'
 " Plug 'terryma/vim-multiple-cursors' 多光标操作
+
+" Plug 'junegunn/fzf', { 'do': './install --bin' }
+" Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " false or fale
@@ -268,7 +272,7 @@ color deus
 
 
 
-" let g:SnazzyTransparent = 1
+let g:SnazzyTransparent = 1
 
 " Cursor shape
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -491,3 +495,16 @@ let g:airline#extensions#whitespace#enabled = 0
 " let g:indentLine_showFirstIndentLevel = 1
 " let g:indentLine_setColors = 0
 " }}
+
+
+" ==
+" == GitGutter
+" ==
+let g:gitgutter_map_keys = 0
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_preview_win_floating = 1
+autocmd BufWritePost * GitGutter
+nnoremap <LEADER>gf :GitGutterFold<CR>
+nnoremap T :GitGutterPreviewHunk<CR>
+nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
+nnoremap <LEADER>g= :GitGutterNextHunk<CR>
