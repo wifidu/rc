@@ -17,8 +17,8 @@ filetype plugin on
 filetype plugin indent on
 set mouse=a
 set encoding=utf-8
+
 set clipboard=unnamedplus
-" 复制到系统剪切板　sudo pacman -S xsel
 
 " Prevent incorrect backgroung rendering
 let &t_ut=''
@@ -63,6 +63,7 @@ set scrolloff=5
 
 noremap <LEADER><CR> :nohlsearch<CR>
 set incsearch 
+" set tabstop=4
 set ignorecase 
 map Q :q<CR>
 map W :w<CR>
@@ -103,10 +104,19 @@ set smartcase
 call plug#begin('~/.vim/plugged')
 " 注释
 
+" Plug 'theniceboy/eleline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"===
+"=== colorscheme
+"===
+
 Plug 'ayu-theme/ayu-vim'
 Plug 'connorholyday/vim-snazzy'
+Plug 'ajmwagar/vim-deus'
+"Plug 'rakr/vim-one'
+Plug 'arzg/vim-colors-xcode'
+
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary' 
 Plug 'tpope/vim-surround'
@@ -134,6 +144,8 @@ Plug 'junegunn/vim-easy-align'
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/SimpylFold'
 Plug 'itchyny/vim-cursorword'
+
+Plug 'Yggdroot/indentLine'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Track the engine.
@@ -201,9 +213,8 @@ map td :r !date "+%Y-%m-%d %H:%M:%S"
 let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
-color snazzy
-let g:SnazzyTransparent = 1
 set termguicolors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
 " let g:airline_theme='base16_flat'
 let g:airline_theme='dracula'
@@ -215,9 +226,9 @@ let g:airline_theme='dracula'
 " 蓝色
 " let g:airline_theme='base16_snazzy' 
 " snazzy
-let g:lightline = {
-\ 'colorscheme': 'snazzy',
-\ }
+" let g:lightline = {
+" \ 'colorscheme': 'snazzy',
+" \ }
 
 
 " ===
@@ -234,39 +245,28 @@ nnoremap <Leader>s :SemanticHighlightToggle<cr>
 " === Dress up my vim
 " ===
 map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
-map <LEADER>c2 :set background=light<CR>:colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
+map <LEADER>c2 :colorscheme deus<CR>:AirlineTheme dracula<CR>
+map <LEADER>c3 :colorscheme xcodedark<CR>:AirlineTheme dracula<CR>
+map <LEADER>c4 :colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
 
-
-" ===
-" === ale
-" ===
-let g:ale_virtualtext_cursor = 1
-let g:ale_linters = {
-\   'php': ['langserver'],
-\}
-" let b:ale_linters = [] "['pylint']
-" " let b:ale_fixers = ['autopep8', 'yapf']
-" let g:ale_python_pylint_options = "--extension-pkg-whitelist=pygame"
+" color snazzy
+" let g:SnazzyTransparent = 1
+" set background=dark    " Setting dark mode
+color deus
+" let g:deus_termcolors=256
 
 " ===
 " === vim-indent-guide
 " ===
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent = 1
-silent! unmap <LEADER>ig
-autocmd WinEnter * silent! unmap <LEADER>ig
+" let g:indent_guides_guide_size = 1
+" let g:indent_guides_start_level = 2
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_color_change_percent = 1
+" silent! unmap <LEADER>ig
+" autocmd WinEnter * silent! unmap <LEADER>ig
 
 
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-" set background=dark    " Setting dark mode
-" colorscheme deus
-" let g:deus_termcolors=256
-"
- "--fold setting vim折叠设置--
 
 " let g:SnazzyTransparent = 1
 
@@ -394,7 +394,7 @@ func! CompileRunGcc()
 endfunc
 
 
-vnoremap Y "+y
+" vnoremap Y "+y
 " set clipboard=unnamedplus
 
 " ===
@@ -437,11 +437,6 @@ xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)
 " xmap <silent> <C-d> <Plug>(coc-cursors-range)
 " use normal command like `<leader>xi(`
 map vw viw
-map v( va(
-map v' va'
-map v" va"
-map v` va`
-map v< va<
 
 vmap: :norm 
 " xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
@@ -478,3 +473,21 @@ endif
 " let g:Illuminate_delay = 750
 " hi illuminatedWord cterm=undercurl gui=undercurl
 
+"===
+"=== airline
+"===
+
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#formatter = 'default'
+
+" IndentLine {{
+" let g:indentLine_char_list = ['▏', '¦', '┆', '┊']
+" let g:indentLine_color_term = 239
+" let g:indentLine_char = ''
+" let g:indentLine_first_char = ''
+" let g:indentLine_showFirstIndentLevel = 1
+" let g:indentLine_setColors = 0
+" }}
