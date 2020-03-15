@@ -6,7 +6,8 @@ map H ^
 " === System
 " ===
 
-set foldmethod=indent
+set foldmethod=marker
+" set foldmethod=syntax
 set wrap
 set foldlevel=99
 set foldenable
@@ -47,9 +48,9 @@ set hlsearch
 " ===
 " Better tab
 set expandtab
-set tabstop=2
-set shiftwidth=4
-set softtabstop=2
+set tabstop=4     " 读到档案的\t (Tab 字元) 时，要解译为几个空白
+set shiftwidth=4  " tab 宽
+set softtabstop=4 " Backspace
 set list
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
@@ -129,6 +130,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-fugitive'
 " Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim' " gv (normal) to show git log
 
 Plug 'kien/ctrlp.vim'
 
@@ -481,11 +483,11 @@ endif
 "=== airline
 "===
 
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
 
 " IndentLine {{
 " let g:indentLine_char_list = ['▏', '¦', '┆', '┊']
@@ -508,3 +510,26 @@ nnoremap <LEADER>gf :GitGutterFold<CR>
 nnoremap T :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+
+" ===
+" === GV
+" ===
+nnoremap gv :GV<CR>
+
+"===
+"=== fold
+"===
+" :help folding
+" 命令小结
+" zc	关闭当前打开的折叠
+" zo	打开当前的折叠
+" zm	关闭所有折叠
+" zM	关闭所有折叠及其嵌套的折叠
+" zr	打开所有折叠
+" zR	打开所有折叠及其嵌套的折叠
+" zd	删除当前折叠
+" zE	删除所有折叠
+" zj	移动至下一个折叠
+" zk	移动至上一个折叠
+" zn	禁用折叠
+" zN	启用折叠
