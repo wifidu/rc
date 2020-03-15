@@ -17,8 +17,8 @@ filetype plugin on
 filetype plugin indent on
 set mouse=a
 set encoding=utf-8
-
-set clipboard=unnamed
+set clipboard=unnamedplus
+" 复制到系统剪切板　sudo pacman -S xsel
 
 " Prevent incorrect backgroung rendering
 let &t_ut=''
@@ -63,7 +63,6 @@ set scrolloff=5
 
 noremap <LEADER><CR> :nohlsearch<CR>
 set incsearch 
-" set tabstop=4
 set ignorecase 
 map Q :q<CR>
 map W :w<CR>
@@ -78,7 +77,7 @@ map <LEADER>j <C-w>j
 " Rotate screens
 noremap srk <C-w>b<C-w>K
 noremap srh <C-w>b<C-w>H
-map <LEADER>+ :hertical resize+5<CR>
+map <LEADER>+ :vertical resize+5<CR>
 map <LEADER>- :vertical resize-5<CR>
 map <LEADER>n :NERDTreeToggle<CR>
 
