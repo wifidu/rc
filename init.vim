@@ -112,11 +112,11 @@ Plug 'vim-airline/vim-airline-themes'
 "=== colorscheme
 "===
 
-Plug 'ayu-theme/ayu-vim'
-Plug 'connorholyday/vim-snazzy'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'connorholyday/vim-snazzy'
 Plug 'ajmwagar/vim-deus'
 "Plug 'rakr/vim-one'
-Plug 'arzg/vim-colors-xcode'
+" Plug 'arzg/vim-colors-xcode'
 
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary' 
@@ -148,8 +148,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tmhedberg/SimpylFold'
 Plug 'itchyny/vim-cursorword'
 
-Plug 'Yggdroot/indentLine'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'Yggdroot/indentLine'
+" Plug 'nathanaelkane/vim-indent-guides'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -180,13 +180,13 @@ Plug 'mattn/emmet-vim'
 " voldikss/vim-floaterm
 
 Plug 'mhinz/vim-startify'
-let g:ctrlp_map = '<c-p>'
 " Plug 'terryma/vim-multiple-cursors' 多光标操作
 
 " Plug 'junegunn/fzf', { 'do': './install --bin' }
 " Plug 'junegunn/fzf.vim'
 call plug#end()
 
+let g:ctrlp_map = '<c-p>'
 " false or fale
 
 " let g:switch_mapping = "-"
@@ -216,7 +216,7 @@ map td :r !date "+%Y-%m-%d %H:%M:%S"
 " ===
 " === Dress up my vim
 " ===
-let ayucolor="light"  " for light version of theme
+" let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 set termguicolors
@@ -241,7 +241,10 @@ let g:airline_theme='dracula'
 " === NERDTree
 " ===
 let NERDTreeMapCloseDir = "n"
-let NERDTreeMapChangeRoot = "y"
+map <LEADER>m :Bookmark 
+map <LEADER>t :OpenBookmark 
+
+" let NERDTreeMapChangeRoot = "y"
 
 
 " 显示不同变量的不同颜色
@@ -250,10 +253,10 @@ nnoremap <Leader>s :SemanticHighlightToggle<cr>
 
 " === Dress up my vim
 " ===
-map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
-map <LEADER>c2 :colorscheme deus<CR>:AirlineTheme dracula<CR>
-map <LEADER>c3 :colorscheme xcodedark<CR>:AirlineTheme dracula<CR>
-map <LEADER>c4 :colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
+" map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
+" map <LEADER>c2 :colorscheme deus<CR>:AirlineTheme dracula<CR>
+" map <LEADER>c3 :colorscheme xcodedark<CR>:AirlineTheme dracula<CR>
+" map <LEADER>c4 :colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
 
 " color snazzy
 " let g:SnazzyTransparent = 1
@@ -271,10 +274,7 @@ color deus
 " silent! unmap <LEADER>ig
 " autocmd WinEnter * silent! unmap <LEADER>ig
 
-
-
-
-let g:SnazzyTransparent = 1
+" let g:SnazzyTransparent = 1
 
 " Cursor shape
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -482,12 +482,21 @@ endif
 "===
 "=== airline
 "===
-
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#formatter = 'default'
 
 " IndentLine {{
 " let g:indentLine_char_list = ['▏', '¦', '┆', '┊']
@@ -533,3 +542,17 @@ nnoremap gv :GV<CR>
 " zk	移动至上一个折叠
 " zn	禁用折叠
 " zN	启用折叠
+
+"===
+"=== startify
+"===
+let g:startify_bookmarks = [ 
+            \ {'c': '~/.config/nvim/init.vim'},]
+let g:startify_lists = [
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ { 'type': 'files',     'header': ['   MRU']            },
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ ]
+let g:startify_custom_indices = ['1', '2', '3', '4', '5']
+let g:startify_files_number = 6
