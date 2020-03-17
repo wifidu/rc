@@ -6,8 +6,8 @@ map H ^
 " === System
 " ===
 
-set foldmethod=marker
-" set foldmethod=syntax
+" set foldmethod=marker
+set foldmethod=syntax
 set wrap
 set foldlevel=99
 set foldenable
@@ -47,14 +47,17 @@ set hlsearch
 " === Editor behavior
 " ===
 " Better tab
+
 set expandtab
-set tabstop=4     " 读到档案的\t (Tab 字元) 时，要解译为几个空白
-set shiftwidth=4  " tab 宽
-set softtabstop=4 " Backspace
+set tabstop=2     " 读到档案的\t (Tab 字元) 时，要解译为几个空白
+set shiftwidth=2  " tab 宽
+set softtabstop=2 " Backspace
 set list
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
-
+autocmd FileType php set tabstop=4     " 读到档案的\t (Tab 字元) 时，要解译为几个空白
+autocmd FileType php set shiftwidth=4  " tab 宽
+autocmd FileType php set softtabstop=4 " Backspace
 
 " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 " let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -242,7 +245,7 @@ let g:airline_theme='dracula'
 " ===
 let NERDTreeMapCloseDir = "n"
 map <LEADER>m :Bookmark 
-map <LEADER>t :OpenBookmark 
+map <C-f> :OpenBookmark 
 
 " let NERDTreeMapChangeRoot = "y"
 
@@ -547,12 +550,13 @@ nnoremap gv :GV<CR>
 "=== startify
 "===
 let g:startify_bookmarks = [ 
-            \ {'c': '~/.config/nvim/init.vim'},]
+            \ {'c': '~/.config/nvim/init.vim'},
+            \ {'n': '~/WorkPlatform/www/wffl/.env'},]
 let g:startify_lists = [
       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
       \ { 'type': 'files',     'header': ['   MRU']            },
       \ { 'type': 'sessions',  'header': ['   Sessions']       },
       \ { 'type': 'commands',  'header': ['   Commands']       },
       \ ]
-let g:startify_custom_indices = ['1', '2', '3', '4', '5']
-let g:startify_files_number = 6
+let g:startify_custom_indices = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+let g:startify_files_number = 10
