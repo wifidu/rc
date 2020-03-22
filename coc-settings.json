@@ -23,6 +23,15 @@
 	"diagnostic.virtualText": true,
 	"codeLens.enable": true,
     "languageserver": {
+        "golang": {
+          "command": "go-langserver",
+          "filetypes": ["go"],
+          "initializationOptions": {
+            "gocodeCompletionEnabled": true,
+            "diagnosticsEnabled": true,
+            "lintTool": "golint"
+          }
+        },
         "intelephense": {
             "command": "intelephense",
             "args": ["--stdio"],
