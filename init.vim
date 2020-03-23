@@ -107,6 +107,7 @@ noremap D 5j
 set smartcase
 call plug#begin('~/.vim/plugged')
 " 注释
+Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 
 " Plug 'theniceboy/eleline.vim'
 Plug 'vim-airline/vim-airline'
@@ -187,6 +188,9 @@ Plug 'mhinz/vim-startify'
 
 " Plug 'junegunn/fzf', { 'do': './install --bin' }
 " Plug 'junegunn/fzf.vim'
+
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 call plug#end()
 
 let g:ctrlp_map = '<c-p>'
@@ -560,3 +564,38 @@ let g:startify_lists = [
       \ ]
 let g:startify_custom_indices = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 let g:startify_files_number = 10
+
+" ===
+" === suda.vim
+" ===
+cnoreabbrev sudowrite w suda://%
+cnoreabbrev sw w suda://%
+
+" " ===
+" " === vim-go
+" " ===
+" let g:go_def_mapping_enabled = 0
+" let g:go_template_autocreate = 0
+" let g:go_textobj_enabled = 0
+" let g:go_auto_type_info = 1
+" let g:go_def_mapping_enabled = 0
+" let g:go_highlight_array_whitespace_error = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_chan_whitespace_error = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_format_strings = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_function_parameters = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_generate_tags = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_space_tab_error = 1
+" let g:go_highlight_string_spellcheck = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_trailing_whitespace_error = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_variable_assignments = 0
+" let g:go_highlight_variable_declarations = 0
+" let g:go_doc_keywordprg_enabled = 0
