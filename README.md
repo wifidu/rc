@@ -1,10 +1,12 @@
-# VIMRC 
+# VIMRC
 
 ## Requirements
 
 - Node.js 12+
 - npm i intelephense -g
 - figlet(not necessary)
+- php-cs-fixer `$ ./composer.phar global require friendsofphp/php-cs-fixer`
+- yapf `pip install`
 
 > make sure your npm has china source
 
@@ -35,32 +37,13 @@ Add `languageserver` section in your `coc-settings.json` for registering custom 
 ## some useful tools
 
 - ripgrep recursively searches directories for a regex pattern
-- ..
 
 ## some useful commands
 
-ci'、ci"、ci(、ci[、ci{、ci< - 分别更改这些配对标点符号中的文本内容
-di'、di"、di(或dib、di[、di{或diB、di< - 分别删除这些配对标点符号中的文本内容
-yi'、yi"、yi(、yi[、yi{、yi< - 分别复制这些配对标点符号中的文本内容
-vi'、vi"、vi(、vi[、vi{、vi< - 分别选中这些配对标点符号中的文本内容
-
-,a=        对齐等号表达
-,a:        对齐冒号表达式(json/map等)
-
-vimspector
-
 按dt"删除所有内容，直到第一个引号
- 默认左对齐
-,a<space>  首个空格对齐
-,a2<space> 第二个空格对齐
-,a-<space> 倒数第一个空格对齐
-,a-2<space> 倒数第二个空格对齐
-,a*<space> 所有空格依次对齐
-
-__     _____ __  __    ____ ___  _   _ _____ 
-\ \   / /_ _|  \/  |  / ___/ _ \| \ | |  ___|
- \ \ / / | || |\/| | | |  | | | |  \| | |_   
-  \ V /  | || |  | | | |__| |_| | |\  |  _|  
-   \_/  |___|_|  |_|  \____\___/|_| \_|_|    
-                                             
-
+默认左对齐
+ga<space>  首个空格对齐
+ga2<space> 第二个空格对齐
+ga-<space> 倒数第一个空格对齐
+ga-2<space> 倒数第二个空格对齐
+ga*<space> 所有空格依次对齐

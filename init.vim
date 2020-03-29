@@ -106,6 +106,9 @@ noremap E 5k
 noremap D 5j
 set smartcase
 call plug#begin('~/.vim/plugged')
+
+" Plug 'tobyS/pdv'
+
 " 注释
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 
@@ -599,3 +602,14 @@ cnoreabbrev sw w suda://%
 " let g:go_highlight_variable_assignments = 0
 " let g:go_highlight_variable_declarations = 0
 " let g:go_doc_keywordprg_enabled = 0
+
+" " PHP documenter script bound to Control-P
+" autocmd FileType php inoremap <C-f> <ESC>:call PhpDocSingle()<CR>i
+" autocmd FileType php nnoremap <C-f> :call PhpDocSingle()<CR>
+" autocmd FileType php vnoremap <C-f> :call PhpDocRange()<CR>
+
+"===
+"=== php-cs-fixer
+"===
+
+map <F2> :!php-cs-fixer fix --config ~/.php_cs %<CR>

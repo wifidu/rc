@@ -1,9 +1,9 @@
 {
-    	"coc.preferences.hoverTarget": "preview",
+  "coc.preferences.hoverTarget": "preview",
 	"coc.preferences.enableFloatHighlight": true,
 	"coc.preferences.snippetStatusText": "Ⓢ ",
 	"coc.preferences.extensionUpdateCheck": "weekly",
-	"suggest.detailMaxLength": 60,
+  "suggest.detailMaxLength": 120,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
 	"suggest.triggerAfterInsertEnter": false,
@@ -20,6 +20,8 @@
 	"diagnostic.refreshAfterSave": false,
 	"diagnostic.checkCurrentLine": true,
 	"diagnostic.virtualTextPrefix": " ❯❯❯ ",
+  "diagnostic.errorSign": "×",
+	"diagnostic.warningSign": "»",
 	"diagnostic.virtualText": true,
 	"codeLens.enable": true,
     "languageserver": {
