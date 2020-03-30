@@ -7,6 +7,7 @@
 - figlet(not necessary)
 - php-cs-fixer `$ ./composer.phar global require friendsofphp/php-cs-fixer`
 - yapf `pip install`
+- xclip
 
 > make sure your npm has china source
 
