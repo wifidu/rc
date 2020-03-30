@@ -49,4 +49,5 @@ ga-<space> 倒数第一个空格对齐
 ga-2<space> 倒数第二个空格对齐
 ga*<space> 所有空格依次对齐
 
-
+## TIM
+env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" wine "c:\\Program Files\\Tencent\\TIM\\Bin\\TIM.exe"
