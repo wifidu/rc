@@ -26,7 +26,7 @@ filetype plugin indent on
 set mouse=a
 set encoding=utf-8
 
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 " Prevent incorrect backgroung rendering
 let &t_ut=''
@@ -224,8 +224,8 @@ map tmh :-tabmove<CR>
 map tml :+tabmove<CR>
 
 " Call figlet
-map tx :r !figlet 
-map td :r !date "+%Y-%m-%d %H:%M:%S"
+map tx :r !figlet -f block 
+map td :r !date "+%Y-%m-%d %H:%M:%S"<CR>
 
 " w !sudo tee %
 " w ~./***   写到某路径  r 读
