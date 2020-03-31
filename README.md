@@ -35,6 +35,17 @@ Add `languageserver` section in your `coc-settings.json` for registering custom 
 }
 ```
 
+## Input Methods
+
+Install: `fcitx` `fcitx-im` `fcitx-googlepinyin` `fcitx-configtool`
+
+And in `/etc/X11/xinit/xinitrc`:
+```
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+```
+
 ## some useful tools
 
 - ripgrep recursively searches directories for a regex pattern
