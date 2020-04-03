@@ -25,23 +25,7 @@ Add `languageserver` section in your `coc-settings.json` for registering custom 
 `:CocConfig`
 
 > Recommended (way faster than php-language-server)
-
 > [:star: Buy an Intelephense licence to access premium features.](https://intelephense.com/)
-
-```json
-{
-    "languageserver": {
-        "intelephense": {
-            "command": "intelephense",
-            "args": ["--stdio"],
-            "filetypes": ["php"],
-            "initializationOptions": {
-                "storagePath": "/tmp/intelephense"
-            }
-        }
-    },
-}
-```
 
 ## Input Methods
 
@@ -73,11 +57,3 @@ ga*<space> 所有空格依次对齐
 - /opt/deepinwine/apps/Deepin-TIM/run.sh
 - env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" wine "c:\\Program Files\\Tencent\\TIM\\Bin\\TIM.exe"
 - source run.sh
-
-
-" __  ____   __  _   ___     _____ __  __ ____   ____
-"|  \/  \ \ / / | \ | \ \   / /_ _|  \/  |  _ \ / ___|
-"| |\/| |\ V /  |  \| |\ \ / / | || |\/| | |_) | |
-"| |  | | | |   | |\  | \ V /  | || |  | |  _ <| |___
-"|_|  |_| |_|   |_| \_|  \_/  |___|_|  |_|_| \_\\____|
-
