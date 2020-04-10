@@ -23,6 +23,8 @@ filetype on
 filetype indent on
 filetype plugin on
 filetype plugin indent on
+set autoindent
+set smartindent
 set mouse=a
 set encoding=utf-8
 
@@ -114,7 +116,7 @@ noremap E 5k
 noremap D 5j
 set smartcase
 call plug#begin('~/.vim/plugged')
-
+" Plug 'alvan/vim-closetag'
 " Plug 'tobyS/pdv'
 
 " 注释
@@ -645,5 +647,6 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDToggleCheckAllLines = 1
 map gcc <LEADER>c<LEADER>
 
-" autocmd FileType html map <LEADER>cm ko<++><ESC><LEADER>cc<LEADER><LEADER>
-map <LEADER>cm ko<++><ESC><LEADER>cc<LEADER><LEADER>
+autocmd FileType html,php map <LEADER>cm ko<++><ESC><LEADER>cc<LEADER><LEADER>
+
+au FileType html     let b:AutoPairs = AutoPairsDefine({'>': '<'})
