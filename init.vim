@@ -1,4 +1,5 @@
-" please read through this file and change what you need to change
+
+"please read through this file and change what you need to change
 
 let g:python_host_prog='/usr/bin/python2'
 let g:python3_host_prog='/usr/bin/python3'
@@ -130,7 +131,7 @@ Plug 'vim-airline/vim-airline-themes'
 "===
 
 " Plug 'ayu-theme/ayu-vim'
-" Plug 'connorholyday/vim-snazzy'
+Plug 'connorholyday/vim-snazzy'
 Plug 'ajmwagar/vim-deus'
 "Plug 'rakr/vim-one'
 " Plug 'arzg/vim-colors-xcode'
@@ -277,13 +278,13 @@ nnoremap <Leader>s :SemanticHighlightToggle<cr>
 
 " === Dress up my vim
 " ===
-" map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
+map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
 " map <LEADER>c2 :colorscheme deus<CR>:AirlineTheme dracula<CR>
 " map <LEADER>c3 :colorscheme xcodedark<CR>:AirlineTheme dracula<CR>
 " map <LEADER>c4 :colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
 
 " color snazzy
-" let g:SnazzyTransparent = 1
+let g:SnazzyTransparent = 1
 " set background=dark    " Setting dark mode
 color deus
 " let g:deus_termcolors=256
@@ -631,12 +632,6 @@ cnoreabbrev sw w suda://%
 map <F2> :!php-cs-fixer fix --config ~/.php_cs %<CR>
 
 "===
-"=== php array
-"===
-
-map mm i'<++>' => '<++>',<ESC>
-
-"===
 "=== comment
 "===
 let g:NERDSpaceDelims = 1
@@ -650,3 +645,8 @@ map gcc <LEADER>c<LEADER>
 autocmd FileType html,php map <LEADER>cm ko<++><ESC><LEADER>cc<LEADER><LEADER>
 
 au FileType html     let b:AutoPairs = AutoPairsDefine({'>': '<'})
+
+"===
+"=== transparent
+"===
+highlight Normal guibg=NONE ctermbg=None
