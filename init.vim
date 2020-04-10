@@ -644,3 +644,6 @@ let g:NERDDefaultAlign = 'left'
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 map gcc <LEADER>c<LEADER>
+
+" autocmd FileType html map <LEADER>cm ko<++><ESC><LEADER>cc<LEADER><LEADER>
+map <LEADER>cm ko<++><ESC><LEADER>cc<LEADER><LEADER>
