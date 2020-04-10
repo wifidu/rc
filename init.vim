@@ -3,7 +3,7 @@
 let g:python_host_prog='/usr/bin/python2'
 let g:python3_host_prog='/usr/bin/python3'
 
-let g:mkdp_browser = 'chromium'
+" let g:mkdp_browser = 'chromium'
 
 map e $
 map H ^
@@ -65,6 +65,7 @@ set scrolloff=5
 autocmd FileType php set tabstop=4     " 读到档案的\t (Tab 字元) 时，要解译为几个空白
 autocmd FileType php set shiftwidth=4  " tab 宽
 autocmd FileType php set softtabstop=4 " Backspace
+au BufNewFile,BufRead *.blade.php set filetype=html
 
 " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 " let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -133,7 +134,10 @@ Plug 'ajmwagar/vim-deus'
 " Plug 'arzg/vim-colors-xcode'
 
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-commentary' 
+" Plug 'tpope/vim-commentary' 
+
+Plug 'preservim/nerdcommenter'
+
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs' 
 
@@ -154,7 +158,8 @@ Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 " Markdown
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'vimwiki/vimwiki'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } , 'for' :['markdown', 'vim-plug']}
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } , 'for' :['markdown', 'vim-plug']}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 Plug 'junegunn/vim-easy-align'
 
@@ -454,11 +459,13 @@ set statusline=%{anzu#search_status()}
 
 map gtd :Gdiff<CR>
 
+" use normal command like `<leader>xi(`
+nmap <leader>x  <Plug>(coc-cursors-operator)
+
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <silent> <C-d> <Plug>(coc-cursors-word)*
 xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
-" xmap <silent> <C-d> <Plug>(coc-cursors-range)
-" use normal command like `<leader>xi(`
+xmap <silent> <C-d> <Plug>(coc-cursors-range)
 map vw viw
 
 vmap: :norm 
@@ -620,3 +627,20 @@ cnoreabbrev sw w suda://%
 "===
 
 map <F2> :!php-cs-fixer fix --config ~/.php_cs %<CR>
+
+"===
+"=== php array
+"===
+
+map mm i'<++>' => '<++>',<ESC>
+
+"===
+"=== comment
+"===
+let g:NERDSpaceDelims = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDDefaultAlign = 'left'
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+map gcc <LEADER>c<LEADER>
