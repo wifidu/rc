@@ -120,6 +120,8 @@ call plug#begin('~/.vim/plugged')
 " Plug 'alvan/vim-closetag'
 " Plug 'tobyS/pdv'
 
+" Plug 'othree/csscomplete.vim'
+
 " 注释
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 
@@ -171,7 +173,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'itchyny/vim-cursorword'
 
 " Plug 'Yggdroot/indentLine'
-" Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -292,10 +294,12 @@ color deus
 " ===
 " === vim-indent-guide
 " ===
-" let g:indent_guides_guide_size = 1
-" let g:indent_guides_start_level = 2
-" let g:indent_guides_enable_on_vim_startup = 1
-" let g:indent_guides_color_change_percent = 1
+" hi IndentGuidesOdd  guibg=red   ctermbg=3
+" hi IndentGuidesEven guibg=green ctermbg=4
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_color_change_percent = 1
 " silent! unmap <LEADER>ig
 " autocmd WinEnter * silent! unmap <LEADER>ig
 
@@ -528,8 +532,8 @@ nmap <leader>5 <Plug>AirlineSelectTab5
 " IndentLine {{
 " let g:indentLine_char_list = ['▏', '¦', '┆', '┊']
 " let g:indentLine_color_term = 239
-" let g:indentLine_char = ''
-" let g:indentLine_first_char = ''
+" let g:indentLine_char = '▏'
+" let g:indentLine_first_char = '¦'
 " let g:indentLine_showFirstIndentLevel = 1
 " let g:indentLine_setColors = 0
 " }}

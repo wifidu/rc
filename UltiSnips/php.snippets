@@ -23,3 +23,21 @@ public function $1($4$3)
     ${6:return $this;}
 }
 endsnippet
+
+snippet api "api doc" b
+    /**
+     * showdoc
+     * @catalog 接口文档/日常管理/${1:文件夹名}
+     * @title ${2:文件名}
+     * @description ${3:接口描述}
+     * @method ${4:请求方法}  application/json
+     * @url {{host}}/api/daily-management/${5:方法名}
+     * @param ${6:变量名} true ${8:类型} ${9:变量说明}
+     * @param <++> true <++> <++>
+     * @json_param ${10:请求json数据}
+     * @return ${11:返回数据}
+     * @return_param ${12:返回参数名} ${13:类型} ${14:说明}
+     * @return_param <++> <++> <++>
+     * @remark ${15:备注}
+     */
+endsnippet
