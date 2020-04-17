@@ -119,9 +119,9 @@ set smartcase
 call plug#begin('~/.vim/plugged')
 " Plug 'alvan/vim-closetag'
 " Plug 'tobyS/pdv'
-
 " Plug 'othree/csscomplete.vim'
 
+Plug 'jwalton512/vim-blade'
 " 注释
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 
@@ -513,7 +513,7 @@ endif
 "===
 "=== airline
 "===
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#show_buffers = 0
