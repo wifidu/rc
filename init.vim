@@ -145,7 +145,7 @@ Plug 'ajmwagar/vim-deus'
 "Plug 'rakr/vim-one'
 " Plug 'arzg/vim-colors-xcode'
 
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-commentary' 
 
 Plug 'preservim/nerdcommenter'
@@ -280,9 +280,9 @@ let g:airline_theme='dracula'
 " ===
 " === NERDTree
 " ===
-let NERDTreeMapCloseDir = "n"
-map <LEADER>m :Bookmark 
-map <C-f> :OpenBookmark 
+" let NERDTreeMapCloseDir = "n"
+" map <LEADER>m :Bookmark
+" map <C-f> :OpenBookmark
 
 " let NERDTreeMapChangeRoot = "y"
 
@@ -379,7 +379,7 @@ nmap <silent> gr <Plug>(coc-references)
 " xmap <silent> <TAB> <Plug>(coc-range-select)
 
 
-" nmap tt :CocCommand explorer<CR>
+nmap tt :CocCommand explorer<CR>
 " coc-translator
 nmap ts <Plug>(coc-translator-p)
 
@@ -662,7 +662,6 @@ map gcc <LEADER>c<LEADER>
 
 autocmd FileType html,php map <LEADER>cm ko<++><ESC><LEADER>cc<LEADER><LEADER>
 
-au FileType html let b:AutoPairs = AutoPairsDefine({'>': '<', '!!' : '!!'})
 
 
 " ===
@@ -711,4 +710,6 @@ noremap <LEADER>f :F  **/*<left><left><left><left><left>
 let g:far#mapping = {
 		\ "replace_undo" : ["l"],
 		\ }
+
+" au FileType html let b:AutoPairs = AutoPairsDefine({'>': '<', '!!' : '!!'})
 
