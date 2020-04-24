@@ -122,6 +122,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'KabbAmine/vCoolor.vim' " <Alt-C> In GNU/Linux it uses a simple GTK+ dialog via Zenity or Yad.
 Plug 'airblade/vim-rooter'
 
+Plug 'ryanoasis/vim-devicons'
+
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -263,7 +265,6 @@ color deus
 " color dracula
 
 " let g:airline_theme='base16_flat'
-let g:airline_theme='dracula'
 " let g:airline_theme='base16' 
 " 红色
 " let g:airline_theme='fairyfloss' 
@@ -534,6 +535,10 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+" adding to vim-airline's statusline
+
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -542,6 +547,7 @@ nmap <leader>5 <Plug>AirlineSelectTab5
 " let g:airline#extensions#tabline#left_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 " let g:airline#extensions#tabline#formatter = 'default'
+let g:airline_theme='dracula'
 
 " IndentLine {{
 " let g:indentLine_char_list = ['▏', '¦', '┆', '┊']
@@ -602,6 +608,10 @@ let g:startify_lists = [
       \ ]
 let g:startify_custom_indices = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 let g:startify_files_number = 10
+
+" Can be enabled or disabled
+" adding to vim-startify screen
+let g:webdevicons_enable_startify = 1
 
 " ===
 " === suda.vim
@@ -675,8 +685,8 @@ noremap <C-f> :Rg<CR>
 noremap <C-h> :History<CR>
 "noremap <C-t> :BTags<CR>
 noremap <C-l> :Lines<CR>
-noremap <C-w> :Buffers<CR>
-noremap <leader>; :History:<CR>
+" noremap <C-w> :Buffers<CR>
+" noremap <leader>; :History:<CR>
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -712,4 +722,3 @@ let g:far#mapping = {
 		\ }
 
 " au FileType html let b:AutoPairs = AutoPairsDefine({'>': '<', '!!' : '!!'})
-

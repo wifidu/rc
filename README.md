@@ -8,6 +8,7 @@
 - php-cs-fixer `$ ./composer.phar global require friendsofphp/php-cs-fixer`
 - yapf `pip install`
 - xclip
+- [nerdfont](https://gitee.com/wifidu/nerd-fonts0)
 - [Theme](http://easycolor.cc/vim/list.html)
 
 > make sure your npm has china source
