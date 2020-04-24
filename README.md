@@ -1,7 +1,5 @@
 # VIMRC
 
-**take the time to make some blade snips**
-
 ## Requirements
 
 - Node.js 12+
@@ -10,6 +8,7 @@
 - php-cs-fixer `$ ./composer.phar global require friendsofphp/php-cs-fixer`
 - yapf `pip install`
 - xclip
+- [Theme](http://easycolor.cc/vim/list.html)
 
 > make sure your npm has china source
 
