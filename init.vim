@@ -112,7 +112,6 @@ set autochdir
 " ===
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-
 noremap E 5k
 noremap D 5j
 set smartcase
@@ -120,6 +119,13 @@ call plug#begin('~/.vim/plugged')
 " Plug 'alvan/vim-closetag'
 " Plug 'tobyS/pdv'
 " Plug 'othree/csscomplete.vim'
+Plug 'KabbAmine/vCoolor.vim' " <Alt-C> In GNU/Linux it uses a simple GTK+ dialog via Zenity or Yad.
+Plug 'airblade/vim-rooter'
+
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'brooth/far.vim'
 
 Plug 'jwalton512/vim-blade'
 " 注释
@@ -133,6 +139,7 @@ Plug 'vim-airline/vim-airline-themes'
 "===
 
 " Plug 'ayu-theme/ayu-vim'
+" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'connorholyday/vim-snazzy'
 Plug 'ajmwagar/vim-deus'
 "Plug 'rakr/vim-one'
@@ -155,9 +162,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim' " gv (normal) to show git log
 
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
 
-Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
 Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 
 " Markdown
@@ -170,7 +179,7 @@ Plug 'junegunn/vim-easy-align'
 
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/SimpylFold'
-Plug 'itchyny/vim-cursorword'
+" Plug 'itchyny/vim-cursorword'
 
 " Plug 'Yggdroot/indentLine'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -182,7 +191,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 
-Plug 'francoiscabrol/ranger.vim'
+" Plug 'francoiscabrol/ranger.vim'
 
 Plug 'AndrewRadev/switch.vim'
 " Formatter
@@ -200,7 +209,7 @@ Plug 'osyo-manga/vim-anzu'
 " Plug 'dense-analysis/ale'
 Plug 'mattn/emmet-vim' 
 
-" Plug 'RRethy/vim-illuminate'
+Plug 'RRethy/vim-illuminate' " automatically highlighting other uses of the word under the cursor
 " voldikss/vim-floaterm
 
 Plug 'mhinz/vim-startify'
@@ -213,7 +222,7 @@ Plug 'mhinz/vim-startify'
 
 call plug#end()
 
-let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_map = '<c-p>'
 " false or fale
 
 " let g:switch_mapping = "-"
@@ -249,6 +258,10 @@ map td :r !date "+%Y-%m-%d %H:%M:%S"<CR>
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
+
+color deus
+" color dracula
+
 " let g:airline_theme='base16_flat'
 let g:airline_theme='dracula'
 " let g:airline_theme='base16' 
@@ -280,21 +293,24 @@ nnoremap <Leader>s :SemanticHighlightToggle<cr>
 
 " === Dress up my vim
 " ===
-map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
+" map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
 " map <LEADER>c2 :colorscheme deus<CR>:AirlineTheme dracula<CR>
 " map <LEADER>c3 :colorscheme xcodedark<CR>:AirlineTheme dracula<CR>
-" map <LEADER>c4 :colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
+" map <LEADER>c4 :colorscheme ayu<CR>:AirlineTheme ayu_dark<CR>
+
+"===
+"=== transparent
+"===
+" highlight Normal guibg=NONE ctermbg=None
 
 " color snazzy
 let g:SnazzyTransparent = 1
-" set background=dark    " Setting dark mode
-color deus
-" let g:deus_termcolors=256
+let g:deus_termcolors=256
 
 " ===
 " === vim-indent-guide
 " ===
-" hi IndentGuidesOdd  guibg=red   ctermbg=3
+" hi IndentGuidesOdd  guibg=#CE9C9C   ctermbg=3
 " hi IndentGuidesEven guibg=green ctermbg=4
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
@@ -302,8 +318,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent = 1
 " silent! unmap <LEADER>ig
 " autocmd WinEnter * silent! unmap <LEADER>ig
-
-" let g:SnazzyTransparent = 1
 
 " Cursor shape
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -383,7 +397,7 @@ nmap ts <Plug>(coc-translator-p)
 " ===
 " === Ranger.vim
 " ===
-nnoremap <LEADER>r :Ranger<CR>
+" nnoremap <LEADER>r :Ranger<CR>
 
 
 " Compile function
@@ -507,8 +521,8 @@ endif
 " ===
 " === vim-illuminate
 " ===
-" let g:Illuminate_delay = 750
-" hi illuminatedWord cterm=undercurl gui=undercurl
+let g:Illuminate_delay = 280
+hi illuminatedWord cterm=undercurl gui=undercurl
 
 "===
 "=== airline
@@ -648,9 +662,53 @@ map gcc <LEADER>c<LEADER>
 
 autocmd FileType html,php map <LEADER>cm ko<++><ESC><LEADER>cc<LEADER><LEADER>
 
-au FileType html     let b:AutoPairs = AutoPairsDefine({'>': '<'})
+au FileType html let b:AutoPairs = AutoPairsDefine({'>': '<', '!!' : '!!'})
 
-"===
-"=== transparent
-"===
-highlight Normal guibg=NONE ctermbg=None
+
+" ===
+" === FZF
+" ===
+set rtp+=/usr/local/opt/fzf
+set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+set rtp+=/home/david/.linuxbrew/opt/fzf
+noremap <C-p> :Files<CR>
+noremap <C-f> :Rg<CR>
+noremap <C-h> :History<CR>
+"noremap <C-t> :BTags<CR>
+noremap <C-l> :Lines<CR>
+noremap <C-w> :Buffers<CR>
+noremap <leader>; :History:<CR>
+
+let g:fzf_preview_window = 'right:60%'
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
+
+noremap <c-d> :BD<CR>
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+
+
+" ===
+" === Far.vim
+" ===
+noremap <LEADER>f :F  **/*<left><left><left><left><left>
+let g:far#mapping = {
+		\ "replace_undo" : ["l"],
+		\ }
+
