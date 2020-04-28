@@ -55,6 +55,8 @@ export XMODIFIERS="@im=fcitx"
 - 拷贝当前文件名到剪切板，当然你可以把它做成快捷键：
  `:let @*=expand("%:t")`
 
+- vim中大小写转化的命令是 gu或者gU
+
 #### vim-easy-align
 
 Press `ga` + **symbol** in normal or visual mode to align text based on symbol
