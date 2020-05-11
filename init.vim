@@ -95,7 +95,8 @@ noremap srk <C-w>b<C-w>K
 noremap srh <C-w>b<C-w>H
 map <LEADER>+ :vertical resize+5<CR>
 map <LEADER>- :vertical resize-5<CR>
-map <LEADER>n :NERDTreeToggle<CR>
+" map <LEADER>n :NERDTreeToggle<CR>
+map <LEADER>n :Ranger<CR>
 
 " map <LEADER>t :Tabularize /
 set mouse=a
@@ -122,12 +123,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'KabbAmine/vCoolor.vim' " <Alt-C> In GNU/Linux it uses a simple GTK+ dialog via Zenity or Yad.
 Plug 'airblade/vim-rooter'
 
+Plug 'posva/vim-vue'
+
 Plug 'ryanoasis/vim-devicons'
 
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'brooth/far.vim'
+Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
 Plug 'jwalton512/vim-blade'
 " 注释
@@ -193,7 +196,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 
-" Plug 'francoiscabrol/ranger.vim'
+Plug 'francoiscabrol/ranger.vim'
 
 Plug 'AndrewRadev/switch.vim'
 " Formatter
@@ -294,7 +297,7 @@ nnoremap <Leader>s :SemanticHighlightToggle<cr>
 
 " === Dress up my vim
 " ===
-" map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
+map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
 " map <LEADER>c2 :colorscheme deus<CR>:AirlineTheme dracula<CR>
 " map <LEADER>c3 :colorscheme xcodedark<CR>:AirlineTheme dracula<CR>
 " map <LEADER>c4 :colorscheme ayu<CR>:AirlineTheme ayu_dark<CR>
@@ -528,13 +531,17 @@ hi illuminatedWord cterm=undercurl gui=undercurl
 "===
 "=== airline
 "===
-" let g:airline#extensions#tabline#enabled = 1
+
+  let g:airline#extensions#tabline#enabled = 1
+
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+
 " adding to vim-airline's statusline
 
 " adding to vim-airline's tabline
@@ -717,8 +724,26 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 " === Far.vim
 " ===
 noremap <LEADER>f :F  **/*<left><left><left><left><left>
+noremap <LEADER>r :Far  **/*<left><left><left><left><left>
 let g:far#mapping = {
 		\ "replace_undo" : ["l"],
 		\ }
 
 " au FileType html let b:AutoPairs = AutoPairsDefine({'>': '<', '!!' : '!!'})
+
+"===
+"=== vue comment
+"===
+
+
+nnoremap <silent> <leader>. :cd %:p:h<CR>:echo expand('%:p:h')<CR>
+
+" Open up lazygit
+noremap \g :Git 
+noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
+
+"===
+"=== markdown
+"===
+
+let g:mkdp_browser = 'google-chrome-stable'
