@@ -129,7 +129,13 @@
   "diagnostic.errorSign": "×",
 	"diagnostic.warningSign": "»",
 	"diagnostic.virtualText": true,
+  "yank.enableCompletion" : false,
 	"codeLens.enable": true,
+  "translator.engines":[
+    "youdao",
+    "haici"
+  ],
+  "translator.enableHover": true,
     "languageserver": {
         "golang": {
           "command": "go-langserver",
@@ -139,15 +145,6 @@
             "diagnosticsEnabled": true,
             "lintTool": "golint"
           }
-        },
-        "intelephense": {
-            "command": "intelephense",
-            "args": ["--stdio"],
-            "filetypes": ["php"],
-            "initializationOptions": {
-                "storagePath": "~/tmp/intelephense",
-                "clearCache": false
-            }
         }
     },
   "html.format.enable": true,

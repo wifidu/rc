@@ -81,7 +81,7 @@ set incsearch
 " set tabstop=4
 set ignorecase 
 map Q :q<CR>
-map W :w<CR>
+map S :w<CR>
 map s <nop>
 map R :source $MYVIMRC<CR>
 map sl :set splitright<CR>:vsplit<CR>
@@ -358,7 +358,7 @@ nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 " nnoremap <silent> gr <Plug>(coc-references)
 " nnoremap <leader>rn <Plug>(coc-rename)
 " nmap <leader>rn <Plug>(coc-rename)
-" nmap <leader>rn :CocCommand document.renameCurrentWord<CR>
+nmap <leader>rn :CocCommand document.renameCurrentWord<CR>
 " Formatting selected code.
 " xmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
@@ -484,14 +484,6 @@ set statusline=%{anzu#search_status()}
 
 map gtd :Gdiff<CR>
 
-" use normal command like `<leader>xi(`
-nmap <leader>x  <Plug>(coc-cursors-operator)
-
-nmap <silent> <C-c> <Plug>(coc-cursors-position)
-nmap <silent> <C-d> <Plug>(coc-cursors-word)*
-xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
-xmap <silent> <C-d> <Plug>(coc-cursors-range)
-map vw viw
 
 vmap: :norm 
 " xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
@@ -724,7 +716,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 " === Far.vim
 " ===
 noremap <LEADER>f :F  **/*<left><left><left><left><left>
-noremap <LEADER>r :Far  **/*<left><left><left><left><left>
+" noremap <LEADER>r :Far  **/*<left><left><left><left><left>
 let g:far#mapping = {
 		\ "replace_undo" : ["l"],
 		\ }
@@ -747,3 +739,16 @@ noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 "===
 
 let g:mkdp_browser = 'google-chrome-stable'
+
+
+"===
+"=== title
+"===
+" use normal command like `<leader>xi(`
+nmap <leader>x  <Plug>(coc-cursors-operator)
+
+nmap <silent> <C-c> <Plug>(coc-cursors-position)
+nmap <silent> <C-d> <Plug>(coc-cursors-word)*
+xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+xmap <silent> <C-d> <Plug>(coc-cursors-range)
+
