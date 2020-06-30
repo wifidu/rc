@@ -27,6 +27,6 @@ set relativenumber
 set cursorline
 set wrap
 set showcmd
-noremap D 5k
-noremap E 5j
+noremap E 5k
+noremap D 5j
 set smartcase
