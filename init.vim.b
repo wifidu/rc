@@ -123,8 +123,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'KabbAmine/vCoolor.vim' " <Alt-C> In GNU/Linux it uses a simple GTK+ dialog via Zenity or Yad.
 Plug 'airblade/vim-rooter'
 
-Plug 'mzlogin/vim-markdown-toc'
-
 Plug 'posva/vim-vue'
 
 Plug 'ryanoasis/vim-devicons'
@@ -202,7 +200,7 @@ Plug 'francoiscabrol/ranger.vim'
 
 Plug 'AndrewRadev/switch.vim'
 " Formatter
-" Plug 'Chiel92/vim-autoformat'
+Plug 'Chiel92/vim-autoformat'
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -455,7 +453,7 @@ endfunc
 " ===
 " === AutoFormat
 " ===
-" nnoremap \f :Autoformat<CR>
+nnoremap \f :Autoformat<CR>
 
 
 "===
@@ -563,22 +561,14 @@ let g:airline_theme='dracula'
 " ==
 " == GitGutter
 " ==
-
-let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_map_keys = 0
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_preview_win_floating = 1
-let g:gitgutter_sign_added = '▎'
-let g:gitgutter_sign_modified = '░'
-let g:gitgutter_sign_removed = '▏'
-let g:gitgutter_sign_removed_first_line = '▔'
-let g:gitgutter_sign_modified_removed = '▒'
-" autocmd BufWritePost * GitGutter
+autocmd BufWritePost * GitGutter
 nnoremap <LEADER>gf :GitGutterFold<CR>
-nnoremap H :GitGutterPreviewHunk<CR>
+nnoremap T :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
-
 
 " ===
 " === GV
@@ -686,7 +676,6 @@ autocmd FileType html,php map <LEADER>cm ko<++><ESC><LEADER>cc<LEADER><LEADER>
 " ===
 " === FZF
 " ===
-
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 set rtp+=/home/david/.linuxbrew/opt/fzf
@@ -763,25 +752,3 @@ nmap <silent> <C-d> <Plug>(coc-cursors-word)*
 xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 xmap <silent> <C-d> <Plug>(coc-cursors-range)
 
-"===
-"=== markdown snippets
-"===
-
-autocmd Filetype markdown inoremap <buffer> ,f <Esc>/<++><CR>:nohlsearch<CR>"_c4l
-autocmd Filetype markdown inoremap <buffer> ,w <Esc>/ <++><CR>:nohlsearch<CR>"_c5l<CR>
-autocmd Filetype markdown inoremap <buffer> ,n ---<Enter><Enter>
-autocmd Filetype markdown inoremap <buffer> ,b **** <++><Esc>F*hi
-autocmd Filetype markdown inoremap <buffer> ,s ~~~~ <++><Esc>F~hi
-autocmd Filetype markdown inoremap <buffer> ,i ** <++><Esc>F*i
-autocmd Filetype markdown inoremap <buffer> ,d `` <++><Esc>F`i
-autocmd Filetype markdown inoremap <buffer> ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
-autocmd Filetype markdown inoremap <buffer> ,m - [ ] 
-autocmd Filetype markdown inoremap <buffer> ,p ![](<++>) <++><Esc>F[a
-autocmd Filetype markdown inoremap <buffer> ,a [](<++>) <++><Esc>F[a
-autocmd Filetype markdown inoremap <buffer> ,1 #<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap <buffer> ,2 ##<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap <buffer> ,3 ###<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap <buffer> ,4 ####<Space><Enter><++><Esc>kA
-autocmd Filetype markdown inoremap <buffer> ,l --------<Enter>
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
