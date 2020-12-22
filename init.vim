@@ -6,6 +6,7 @@ let g:python3_host_prog='/usr/bin/python3'
 
 " let g:mkdp_browser = 'chromium'
 
+noremap <C-q> :qa<CR>
 map e $
 " map H ^
 
@@ -96,7 +97,7 @@ set ignorecase
 map Q :q<CR>
 map S :w<CR>
 map s <nop>
-map R :source $MYVIMRC<CR>
+" map R :source $MYVIMRC<CR>
 map sl :set splitright<CR>:vsplit<CR>
 map sj :set nosplitbelow<CR>:split<CR>
 map <LEADER>l <C-w>l
@@ -276,6 +277,8 @@ Plug 'mbbill/undotree'
 
 " Vim Applications
 Plug 'itchyny/calendar.vim'
+
+Plug 'kevinhwang91/rnvimr'
 " Plug 'terryma/vim-multiple-cursors' 多光标操作
 
 " Plug 'junegunn/fzf', { 'do': './install --bin' }
@@ -288,7 +291,7 @@ call plug#end()
 " ===
 " === vim-calendar
 " ===
-"noremap \c :Calendar -position=here<CR>
+" noremap \c :Calendar -position=here<CR>
 noremap \\ :Calendar -view=clock -position=here<CR>
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
@@ -890,4 +893,29 @@ cnoremap <M-w> <S-Right>
 " ===
 let g:rooter_patterns = ['__vim_project_root', '.git/']
 let g:rooter_silent_chdir = 1
+
+
+" ===
+" === rnvimr
+" ===
+let g:rnvimr_ex_enable = 1
+let g:rnvimr_pick_enable = 1
+let g:rnvimr_draw_border = 0
+" let g:rnvimr_bw_enable = 1
+highlight link RnvimrNormal CursorLine
+nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_action = {
+            \ '<C-t>': 'NvimEdit tabedit',
+            \ '<C-x>': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
+let g:rnvimr_layout = { 'relative': 'editor',
+            \ 'width': &columns,
+            \ 'height': &lines,
+            \ 'col': 0,
+            \ 'row': 0,
+            \ 'style': 'minimal' }
+let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
