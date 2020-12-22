@@ -7,7 +7,8 @@ let g:python3_host_prog='/usr/bin/python3'
 " let g:mkdp_browser = 'chromium'
 
 map e $
-map H ^
+" map H ^
+
 
 "
 " ===
@@ -18,6 +19,7 @@ map H ^
 set foldmethod=syntax
 set wrap
 set foldlevel=99
+set tw=0
 set foldenable
 set nocompatible
 filetype on
@@ -31,6 +33,9 @@ set encoding=utf-8
 
 set clipboard+=unnamedplus
 
+set completeopt=longest,noinsert,menuone,noselect,preview
+set undofile
+
 " Prevent incorrect backgroung rendering
 let &t_ut=''
 
@@ -43,7 +48,7 @@ set number
 
 " Show command autocomplete
 " set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
-" set wildmenu                                                 " show a navigable menu for tab completion
+set wildmenu                                                 " show a navigable menu for tab completion
 " set wildmode=longest,list,full
 
 " Press space twice to jump to the next '<++>' and edit it
@@ -64,7 +69,10 @@ set shiftwidth=2  " tab 宽
 set softtabstop=2 " Backspace
 set list
 set listchars=tab:▸\ ,trail:▫
-set scrolloff=5
+set scrolloff=4
+set ttimeoutlen=0
+set notimeout
+set viewoptions=cursor,folds,slash,unix
 autocmd FileType php set tabstop=4     " 读到档案的\t (Tab 字元) 时，要解译为几个空白
 autocmd FileType php set shiftwidth=4  " tab 宽
 autocmd FileType php set softtabstop=4 " Backspace
@@ -74,6 +82,11 @@ au BufNewFile,BufRead *.blade.php set filetype=html
 " let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
+
+" ===
+" === Insert Mode Cursor Movement
+" ===
+inoremap <C-a> <ESC>A
 
 
 noremap <LEADER><CR> :nohlsearch<CR>
@@ -98,6 +111,12 @@ map <LEADER>- :vertical resize-5<CR>
 " map <LEADER>n :NERDTreeToggle<CR>
 map <LEADER>n :Ranger<CR>
 
+set ttyfast "should make scrolling faster
+set lazyredraw "same as above
+set colorcolumn=100
+set visualbell
+set updatetime=100
+set virtualedit=block
 " map <LEADER>t :Tabularize /
 set mouse=a
 
@@ -116,6 +135,38 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 noremap E 5k
 noremap D 5j
 set smartcase
+
+
+" ===
+" === Terminal Behaviors
+" ===
+let g:neoterm_autoscroll = 1
+autocmd TermOpen term://* startinsert
+tnoremap <C-N> <C-\><C-N>
+tnoremap <C-O> <C-\><C-N><C-O>
+let g:terminal_color_0  = '#000000'
+let g:terminal_color_1  = '#FF5555'
+let g:terminal_color_2  = '#50FA7B'
+let g:terminal_color_3  = '#F1FA8C'
+let g:terminal_color_4  = '#BD93F9'
+let g:terminal_color_5  = '#FF79C6'
+let g:terminal_color_6  = '#8BE9FD'
+let g:terminal_color_7  = '#BFBFBF'
+let g:terminal_color_8  = '#4D4D4D'
+let g:terminal_color_9  = '#FF6E67'
+let g:terminal_color_10 = '#5AF78E'
+let g:terminal_color_11 = '#F4F99D'
+let g:terminal_color_12 = '#CAA9FA'
+let g:terminal_color_13 = '#FF92D0'
+let g:terminal_Color_14 = '#9AEDFE'
+
+" Spelling Check with <space>sc
+noremap <LEADER>sc :set spell!<CR>
+
+
+" Opening a terminal window
+noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
+
 call plug#begin('~/.vim/plugged')
 " Plug 'alvan/vim-closetag'
 " Plug 'tobyS/pdv'
@@ -220,6 +271,11 @@ Plug 'RRethy/vim-illuminate' " automatically highlighting other uses of the word
 " voldikss/vim-floaterm
 
 Plug 'mhinz/vim-startify'
+
+Plug 'mbbill/undotree'
+
+" Vim Applications
+Plug 'itchyny/calendar.vim'
 " Plug 'terryma/vim-multiple-cursors' 多光标操作
 
 " Plug 'junegunn/fzf', { 'do': './install --bin' }
@@ -229,6 +285,13 @@ Plug 'mhinz/vim-startify'
 
 call plug#end()
 
+" ===
+" === vim-calendar
+" ===
+"noremap \c :Calendar -position=here<CR>
+noremap \\ :Calendar -view=clock -position=here<CR>
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
 " let g:ctrlp_map = '<c-p>'
 " false or fale
 
@@ -338,7 +401,7 @@ nnoremap > >>
 " ===
 " fix the most annoying bug that coc has
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-python', 'coc-omnisharp', 'coc-yaml', 'coc-translator']
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-python', 'coc-omnisharp', 'coc-yaml', 'coc-translator', 'coc-phpls']
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -540,6 +603,7 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+noremap \p :echo expand('%:p')<CR>
 
 
 " adding to vim-airline's statusline
@@ -791,3 +855,34 @@ autocmd Filetype markdown inoremap <buffer> ,4 ####<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap <buffer> ,l --------<Enter>
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" ===
+" === Undotree
+" ===
+noremap L :UndotreeToggle<CR>
+let g:undotree_DiffAutoOpen = 1
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_ShortIndicators = 1
+let g:undotree_WindowLayout = 2
+let g:undotree_DiffpanelHeight = 8
+let g:undotree_SplitWidth = 24
+function g:Undotree_CustomMap()
+	nmap <buffer> u <plug>UndotreeNextState
+	nmap <buffer> e <plug>UndotreePreviousState
+	nmap <buffer> U 5<plug>UndotreeNextState
+	nmap <buffer> E 5<plug>UndotreePreviousState
+endfunc
+
+" ===
+" === Command Mode Cursor Movement
+" ===
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-w> <S-Right>
+
+
